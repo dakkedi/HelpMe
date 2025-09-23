@@ -45,5 +45,12 @@ public class PlayerController : MonoBehaviour
         
         _currentVelocity = Vector2.Lerp(_currentVelocity, targetVelocity, accelRate * Time.fixedDeltaTime);
         _rb.linearVelocity = _currentVelocity;
+
+        // Clamp player position to grid boundaries
+        var gridManager = GridManager.Instance;
+        Vector2 clampedPosition = _rb.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, gridManager.MinX, gridManager.MaxX);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, gridManager.MinY, gridManager.MaxY);
+        _rb.position = clampedPosition;
     }
 }

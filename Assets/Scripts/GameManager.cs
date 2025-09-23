@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private Transform _playerSpawnPoint;
-    [SerializeField] private bool _spawnEnemies = false;
-    [SerializeField] private float _enemySpawnRadius = 15f;
+    [SerializeField] private bool _spawnEnemies = true;
     [SerializeField] private float _enemySpawnIntervalBase = 1f;
 
     public static GameManager Instance { get; private set; }
@@ -19,11 +18,13 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         Debug.Log("GameManager awake");
         if (Instance != null && Instance != this) {
-            Destroy(this.gameObject);
-            Instance.InitScene();
+            // If another GameManager exists and it's not this one, destroy this and do nothing.
+            // The original one will handle scene initialization.
+            Destroy(gameObject);
+            return;
         } else {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            // DontDestroyOnLoad(this.gameObject); // This can cause issues with scene reloads. Let's manage state within the scene.
         }
         NewSpawnTime();
         InitScene();
@@ -31,14 +32,18 @@ public class GameManager : MonoBehaviour
 
     private void InitScene() {
         Instantiate(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity);
-        _spawnEnemies = true;
     }
 
     private void SpawnEnemy() {
-        float randomAngle = Random.Range(0f, 2f * Mathf.PI);
-        Vector3 spawnOffset = new Vector3(Mathf.Cos(randomAngle) * _enemySpawnRadius, Mathf.Sin(randomAngle) * _enemySpawnRadius, 0);
-        GameObject enemey = Instantiate(_enemyPrefab, _playerSpawnPoint.position + spawnOffset, Quaternion.identity);
-        _enemyList.Add(enemey);
+        if (GridManager.Instance.TryGetRandomSpawnPoint(out Vector3 spawnPos))
+        {
+            GameObject enemy = Instantiate(_enemyPrefab, spawnPos, Quaternion.identity);
+            _enemyList.Add(enemy);
+        }
+        else
+        {
+            Debug.LogWarning("Could not find a valid spawn position for an enemy on the grid's outer layers.");
+        }
     }
     
     private void FixedUpdate() {

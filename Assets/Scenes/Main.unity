@@ -401,6 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1632441940}
   - component: {fileID: 1632441939}
+  - component: {fileID: 1632441941}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -420,11 +421,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439d27a43562bd54d8f462e34a48c43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _gridWidth: 30
-  _gridHeight: 15
+  _gridWidth: 26
+  _gridHeight: 16
   _cellSize: 1
   _towerPrefab: {fileID: 4087091123421108806, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
   _highlightPrefab: {fileID: 967461227001056183, guid: 866b815592b85cb46b8d3920c38720a7, type: 3}
+  _tilePrefab: {fileID: 5508991465458929692, guid: e093f8961c3917749bccfcd8ddae8e02, type: 3}
 --- !u!4 &1632441940
 Transform:
   m_ObjectHideFlags: 0
@@ -440,63 +442,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2506059157980325817
-PrefabInstance:
+--- !u!114 &1632441941
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4087091123421108806, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_Name
-      value: Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532552652240209917, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dc6486bc1a32c2542802aaebdf36d441, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632441938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622ad96ee66cfea4587af0a3b56c7877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pathfinding
 --- !u!1001 &3148479977860079812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -569,6 +526,10 @@ PrefabInstance:
       propertyPath: _spawnEnemies
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8347647876805582075, guid: cb65a8a2da656264aa11ddfca0fb525e, type: 3}
+      propertyPath: _enemySpawnIntervalBase
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2723007221722616328, guid: cb65a8a2da656264aa11ddfca0fb525e, type: 3}
@@ -585,5 +546,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 3148479977860079812}
-  - {fileID: 2506059157980325817}
   - {fileID: 1632441940}

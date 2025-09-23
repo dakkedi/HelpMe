@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1903736010772413489}
   - component: {fileID: 2024710933536837644}
   - component: {fileID: 2947642670979695251}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,10 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e9303abdb480946b50ceb81a4d4192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _attackCooldown: 1
+  _attackCooldown: 3
   _attackDamage: 1
   _attackRange: 10
-  _projectileSpeed: 25
+  _projectileSpeed: 20
   _bulletPrefab: {fileID: 6748003868202439180, guid: 216cc118436a1cb43924042ca9a3c206, type: 3}
 --- !u!61 &2947642670979695251
 BoxCollider2D:
