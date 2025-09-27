@@ -8,6 +8,10 @@ public class TowerController : MonoBehaviour
     [SerializeField] private float _attackRange = 10f;
     [SerializeField] private float _projectileSpeed = 6f;
     [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private int _cost = 5;
+    public int GetCost() {
+        return _cost;
+    }
 
     private GameObject _target = null;
     private float _lastAttackTime = 0f;

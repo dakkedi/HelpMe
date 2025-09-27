@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6225677272146056953}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,8 @@ MonoBehaviour:
   moveSpeed: 5
   acceleration: 10
   deceleration: 10
+  _health: 10
+  _gravitationalPullRadius: 2
 --- !u!114 &6604244280373713750
 MonoBehaviour:
   m_ObjectHideFlags: 0

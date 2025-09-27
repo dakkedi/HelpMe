@@ -107,9 +107,17 @@ public class GridManager : MonoBehaviour
 
     void PlaceTower(int x, int y)
     {
-        Node node = _grid[x, y];
-        Instantiate(_towerPrefab, node.worldPosition, Quaternion.identity);
-        node.isWalkable = false;
+        TowerController prefabScript = _towerPrefab.GetComponent<TowerController>();
+        if (prefabScript.GetCost() <= GameManager.Instance.GetCurrentCoin())
+        {
+            Node node = _grid[x, y];
+            GameObject tower = Instantiate(_towerPrefab, node.worldPosition, Quaternion.identity);
+            if (tower)
+            {
+                GameManager.Instance.UseCoin(prefabScript.GetCost());
+                node.isWalkable = false;
+            }
+        }
     }
 
     public bool TryGetRandomSpawnPoint(out Vector3 spawnPoint)

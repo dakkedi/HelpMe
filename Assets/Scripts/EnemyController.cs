@@ -7,12 +7,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float stoppingDistance = 0.1f;
     [SerializeField] private float _health = 5f;
+    [SerializeField] private float _damage = 1f;
 
-    private Vector2 _currentVelocity;
     private Rigidbody2D _rb;
     private Transform _target;
     private List<Vector3> _path;
-    private Vector3 _previousWaypoint;
     private int _currentWaypointIndex;
     private float _pathRequestCooldown = 0.5f;
     private float _lastPathRequestTime;
@@ -37,14 +36,25 @@ public class EnemyController : MonoBehaviour
         FollowTarget();
     }
 
-    private void RequestPath() {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Using a trigger, the enemy can pass through the player but still detect the overlap.
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // Damage the player upon entering their trigger area.
+            PlayerController.Instance.TakeDamage(_damage);
+        }
+    }
+
+    private void RequestPath()
+    {
         _lastPathRequestTime = Time.time;
 
         List<Vector3> newPath = Pathfinding.Instance.FindPath(transform.position, _target.position);
-        if (newPath != null && newPath.Count > 0) {
+        if (newPath != null && newPath.Count > 0)
+        {
             _path = newPath;
             _currentWaypointIndex = 0;
-            _previousWaypoint = transform.position; // Start segment from current position
         }
     }
 
@@ -62,7 +72,6 @@ public class EnemyController : MonoBehaviour
             Vector3 currentWaypoint = _path[_currentWaypointIndex];
             // Use a small, fixed threshold for switching waypoints.
             if (Vector2.Distance(transform.position, currentWaypoint) < 0.5f) {
-                _previousWaypoint = _path[_currentWaypointIndex];
                 _currentWaypointIndex++;
                 if (_currentWaypointIndex >= _path.Count) {
                     _path = null; // Reached end of path
@@ -78,9 +87,8 @@ public class EnemyController : MonoBehaviour
             }
         }
         
-        // Using MovePosition is more robust for physics-based character movement.
-        Vector2 newPos = _rb.position + targetVelocity * Time.fixedDeltaTime;
-        _rb.MovePosition(newPos);
+        // Set velocity for physics-based movement to ensure collision detection.
+        _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
     }
 
     public void TakeDamage(float damage) {
