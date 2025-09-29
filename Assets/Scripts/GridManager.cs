@@ -114,6 +114,7 @@ public class GridManager : MonoBehaviour
             GameObject tower = Instantiate(_towerPrefab, node.worldPosition, Quaternion.identity);
             if (tower)
             {
+                GameManager.Instance.AddToTowers(tower.GetComponent<TowerController>());
                 GameManager.Instance.UseCoin(prefabScript.GetCost());
                 node.isWalkable = false;
             }

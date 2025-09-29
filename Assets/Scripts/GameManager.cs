@@ -1,8 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,9 +16,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _uiHp;
     [SerializeField] private TextMeshProUGUI _uiCoin;
+    [SerializeField] private List<TowerController> _towers = new List<TowerController>();
+    public void AddToTowers(TowerController tower)
+    {
+        _towers.Add(tower);
+    }
 
 
     public static GameManager Instance { get; private set; }
+
+    public event EventHandler OnCoinCollect;
 
     private List<GameObject> _enemyList = new List<GameObject>();
     private float _nextSpawnTime;
@@ -43,6 +49,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
         if (_spawnEnemies && Time.time > _nextSpawnTime)
@@ -57,7 +64,7 @@ public class GameManager : MonoBehaviour
         _currentCoin = _startingCoin;
         UpdateCoinUi();
         NewSpawnTime();
-        Instantiate(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity);
+        // Instantiate(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity);
         _waveStartTime = Time.time;
     }
 
@@ -107,6 +114,7 @@ public class GameManager : MonoBehaviour
     public void coinCollected()
     {
         _currentCoin++;
+        OnCoinCollect?.Invoke(this, EventArgs.Empty);
         UpdateCoinUi();
     }
 

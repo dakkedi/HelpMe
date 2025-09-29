@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class TowerController : MonoBehaviour
 {
@@ -16,11 +17,27 @@ public class TowerController : MonoBehaviour
     private GameObject _target = null;
     private float _lastAttackTime = 0f;
 
-    private void OnDrawGizmos() {
+    private void Awake()
+    {
+        PlayerController.Instance.OnPlayerLevelUp += PlayerController_OnPlayerLevelUp;
+    }
+
+    private void PlayerController_OnPlayerLevelUp(object sender, EventArgs e)
+    {
+        // THese only affect current towers, not the same level applies to new towers. 
+        _attackDamage++;
+        _attackCooldown *= 0.75f;
+        _attackRange *= 1.5f;
+        _projectileSpeed *= 1.1f;
+    }
+
+    private void OnDrawGizmos()
+    {
         // Draw a circle around the tower with the attack range as radius
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, _attackRange);
-        if (_target != null) {
+        if (_target != null)
+        {
             Gizmos.DrawLine(transform.position, _target.transform.position);
         }
     }
