@@ -25,10 +25,10 @@ public class TowerController : MonoBehaviour
     private void PlayerController_OnPlayerLevelUp(object sender, EventArgs e)
     {
         // THese only affect current towers, not the same level applies to new towers. 
-        _attackDamage++;
-        _attackCooldown *= 0.75f;
-        _attackRange *= 1.5f;
-        _projectileSpeed *= 1.1f;
+        // _attackDamage++;
+        // _attackCooldown *= 0.75f;
+        // _attackRange *= 1.5f;
+        // _projectileSpeed *= 1.1f;
     }
 
     private void OnDrawGizmos()

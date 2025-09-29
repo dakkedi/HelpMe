@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private Transform _playerSpawnPoint;
+    [SerializeField] private bool _gameHalted = false;
     [SerializeField] private bool _spawnEnemies = true;
     [SerializeField] private float _enemySpawnIntervalBase = 1f;
     [SerializeField] private int _startingCoin = 5;
@@ -137,5 +138,17 @@ public class GameManager : MonoBehaviour
     public void UpdateHpUi(int hp)
     {
         _uiHp.text = "HP: " + hp.ToString();
+    }
+
+    public void HaltGame(bool halt)
+    {
+        Debug.Log("Pausing game");
+        Time.timeScale = halt ? 0f : 1f;
+        _gameHalted = halt;
+    }
+
+    public bool IsGameHalted()
+    {
+        return _gameHalted;
     }
 }

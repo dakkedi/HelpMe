@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
         _uiXpSlider.maxValue = _levelThresholds[_currentLevel];
         _uiXpSlider.value = _levelThresholds[_currentLevel-1];
         _currentLevel++;
+        Debug.Log("Player leveled up!");
         OnPlayerLevelUp?.Invoke(this, EventArgs.Empty);
     }
 
