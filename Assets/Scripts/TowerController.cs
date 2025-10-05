@@ -19,7 +19,7 @@ public class TowerController : MonoBehaviour
 
     private void Awake()
     {
-        PlayerController.Instance.OnPlayerLevelUp += PlayerController_OnPlayerLevelUp;
+        // PlayerController.Instance.OnPlayerLevelUp += PlayerController_OnPlayerLevelUp;
     }
 
     private void PlayerController_OnPlayerLevelUp(object sender, EventArgs e)

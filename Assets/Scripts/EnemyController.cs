@@ -3,11 +3,7 @@ using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float acceleration = 15f;
-    [SerializeField] private float stoppingDistance = 0.1f;
-    [SerializeField] private float _health = 5f;
-    [SerializeField] private float _damage = 1f;
+    [SerializeField] private SO_Enemy _enemyStats;
 
     private Rigidbody2D _rb;
     private Transform _target;
@@ -15,14 +11,16 @@ public class EnemyController : MonoBehaviour
     private int _currentWaypointIndex;
     private float _pathRequestCooldown = 0.5f;
     private float _lastPathRequestTime;
+    private float _health = 0f;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _health = _enemyStats.Health;
     }
 
     private void Start() {
-        _target = PlayerController.Instance.gameObject.transform;
+        _target = GameManager.Instance.GetPlayer().transform;
         _lastPathRequestTime = -_pathRequestCooldown; // Allow immediate path request
     }
 
@@ -39,10 +37,10 @@ public class EnemyController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Using a trigger, the enemy can pass through the player but still detect the overlap.
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.TryGetComponent(out Player player))
         {
             // Damage the player upon entering their trigger area.
-            PlayerController.Instance.TakeDamage(_damage);
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(_enemyStats.Damage);
         }
     }
 
@@ -60,9 +58,9 @@ public class EnemyController : MonoBehaviour
 
     private void FollowTarget() {
         // If we are within stopping distance of the final target, stop moving.
-        if (Vector2.Distance(transform.position, _target.position) <= stoppingDistance)
+        if (Vector2.Distance(transform.position, _target.position) <= _enemyStats.StoppingDistance)
         {
-            _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, Vector2.zero, acceleration * Time.fixedDeltaTime);
+            _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, Vector2.zero, _enemyStats.Acceleration * Time.fixedDeltaTime);
             return;
         }
 
@@ -83,12 +81,12 @@ public class EnemyController : MonoBehaviour
 
             if (_currentWaypointIndex < _path.Count) {
                 Vector2 moveDirection = (currentWaypoint - transform.position).normalized;
-                targetVelocity = moveDirection * moveSpeed;
+                targetVelocity = moveDirection * _enemyStats.MoveSpeed;
             }
         }
         
         // Set velocity for physics-based movement to ensure collision detection.
-        _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
+        _rb.linearVelocity = Vector2.Lerp(_rb.linearVelocity, targetVelocity, _enemyStats.Acceleration * Time.fixedDeltaTime);
     }
 
     public void TakeDamage(float damage) {

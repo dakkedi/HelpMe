@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private Transform _playerSpawnPoint;
+    [SerializeField] private Slider _uiXpSlider;
+
     [SerializeField] private bool _gameHalted = false;
     [SerializeField] private bool _spawnEnemies = true;
     [SerializeField] private float _enemySpawnIntervalBase = 1f;
@@ -23,10 +26,11 @@ public class GameManager : MonoBehaviour
         _towers.Add(tower);
     }
 
+    private GameObject _player;
 
     public static GameManager Instance { get; private set; }
 
-    public event EventHandler OnCoinCollect;
+    public event EventHandler OnXpCollect;
 
     private List<GameObject> _enemyList = new List<GameObject>();
     private float _nextSpawnTime;
@@ -50,6 +54,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _player = Instantiate(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity);
+    }
 
     private void Update()
     {
@@ -115,7 +123,7 @@ public class GameManager : MonoBehaviour
     public void coinCollected()
     {
         _currentCoin++;
-        OnCoinCollect?.Invoke(this, EventArgs.Empty);
+        OnXpCollect?.Invoke(this, EventArgs.Empty);
         UpdateCoinUi();
     }
 
@@ -150,5 +158,14 @@ public class GameManager : MonoBehaviour
     public bool IsGameHalted()
     {
         return _gameHalted;
+    }
+
+    public GameObject GetPlayer()
+    {
+        return _player;
+    }
+    public Slider GetXpSlider()
+    {
+        return _uiXpSlider;
     }
 }

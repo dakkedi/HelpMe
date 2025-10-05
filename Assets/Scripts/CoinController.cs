@@ -6,7 +6,7 @@ public class CoinController : MonoBehaviour
     private bool _following = false;
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.TryGetComponent(out Player player))
         {
             GameManager.Instance.coinCollected();
             Destroy(gameObject);
@@ -15,23 +15,23 @@ public class CoinController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsPlayerInReach() && !_following)
+        if (/*IsPlayerInReach() &&*/ !_following)
         {
             _following = true;
         }
 
         if (_following)
         {
-            transform.position = Vector3.MoveTowards(transform.position, PlayerController.Instance.transform.position, Time.deltaTime * 5f);
+            transform.position = Vector3.MoveTowards(transform.position, GameManager.Instance.GetPlayer().transform.position, Time.deltaTime * 5f);
         }
     }
 
-    private bool IsPlayerInReach()
-    {
-        float radius = PlayerController.Instance.GetPullRadius();
-        Vector3 playerPos = PlayerController.Instance.transform.position;
-        Vector3 coinPos = transform.position;
-        float distance = Vector3.Distance(playerPos, coinPos);
-        return distance <= radius;
-    }
+    // private bool IsPlayerInReach()
+    // {
+    //     float radius = PlayerController.Instance.GetPullRadius();
+    //     Vector3 playerPos = PlayerController.Instance.transform.position;
+    //     Vector3 coinPos = transform.position;
+    //     float distance = Vector3.Distance(playerPos, coinPos);
+    //     return distance <= radius;
+    // }
 }

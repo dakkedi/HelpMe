@@ -200,8 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4446c4879e067814db3d9ccd23dcd64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 2
-  acceleration: 5
+  moveSpeed: 2.46
+  acceleration: -4.02
   stoppingDistance: 0
   _health: 2
   _damage: 1
+  _enemyStats: {fileID: 11400000, guid: 692c8efb8b6dd5d4999ef619013a7330, type: 2}
