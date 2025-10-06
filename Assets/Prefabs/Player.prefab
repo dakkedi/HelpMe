@@ -78,7 +78,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2470712982808820347, guid: 8433a140f662cd041b398c6ddd2fab18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -167,11 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e25d5178444384682a9d4b8bf3f531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLevelManager
-  _levelData: {fileID: 11400000, guid: 7fb5e31e4480e4f45a5256d2c5fa5d2f, type: 2}
   _currentLevel: 1
   _currentXP: 0
   _xpToNextLevel: 0
-  _uiXpSlider: {fileID: 0}
 --- !u!114 &6225677272146056953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,7 +401,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 9033699428484915931, guid: 8433a140f662cd041b398c6ddd2fab18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -624,10 +622,10 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6442155513069239550}
   - {fileID: 1030338410161258606}
-  - {fileID: 3749015629988018355}
   - {fileID: 2911412971752096461}
+  - {fileID: 3749015629988018355}
+  - {fileID: 6442155513069239550}
   - {fileID: 8297414162368009052}
   m_Father: {fileID: 153183039737896588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -709,7 +707,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4059640450490198499, guid: 8433a140f662cd041b398c6ddd2fab18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

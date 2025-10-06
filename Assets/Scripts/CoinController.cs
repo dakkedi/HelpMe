@@ -15,7 +15,7 @@ public class CoinController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (/*IsPlayerInReach() &&*/ !_following)
+        if (IsPlayerInReach() && !_following)
         {
             _following = true;
         }
@@ -26,12 +26,13 @@ public class CoinController : MonoBehaviour
         }
     }
 
-    // private bool IsPlayerInReach()
-    // {
-    //     float radius = PlayerController.Instance.GetPullRadius();
-    //     Vector3 playerPos = PlayerController.Instance.transform.position;
-    //     Vector3 coinPos = transform.position;
-    //     float distance = Vector3.Distance(playerPos, coinPos);
-    //     return distance <= radius;
-    // }
+    private bool IsPlayerInReach()
+    {
+        GameObject player = GameManager.Instance.GetPlayer();
+        float radius = player.GetComponent<PlayerController>().GetPullRadius();
+        Vector3 playerPos = player.transform.position;
+        Vector3 coinPos = transform.position;
+        float distance = Vector3.Distance(playerPos, coinPos);
+        return distance <= radius;
+    }
 }

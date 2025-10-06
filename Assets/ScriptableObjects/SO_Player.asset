@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e0371d35da9db46ac62b2a46842c2f, type: 3}
   m_Name: SO_Player
   m_EditorClassIdentifier: Assembly-CSharp::SO_Player
-  health: 2
-  moveSpeed: 3
-  acceleration: 15
-  decceleration: 15
-  gravitationalPullRadius: 15
-  level: 1
+  _health: 10
+  _moveSpeed: 3
+  _acceleration: 15
+  _decceleration: 15
+  _gravitationalPullRadius: 2

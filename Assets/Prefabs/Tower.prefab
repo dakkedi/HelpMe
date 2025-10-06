@@ -106,9 +106,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _attackCooldown: 1
   _attackDamage: 1
-  _attackRange: 5
+  _attackRange: 4
   _projectileSpeed: 20
   _bulletPrefab: {fileID: 6748003868202439180, guid: 216cc118436a1cb43924042ca9a3c206, type: 3}
+  _cost: 5
 --- !u!61 &2947642670979695251
 BoxCollider2D:
   m_ObjectHideFlags: 0

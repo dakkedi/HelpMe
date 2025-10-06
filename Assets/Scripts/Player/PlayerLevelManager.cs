@@ -4,46 +4,45 @@ using UnityEngine.UI;
 
 public class PlayerLevelManager : MonoBehaviour
 {
-    [Header("Data")]
-    [Tooltip("Reference to the Scriptable Object with the XP formula constants.")]
-    [SerializeField] private SO_LevelProgression _levelData;
-
-    [Header("Current State")]
     [SerializeField] private int _currentLevel = 1;
     [SerializeField] private float _currentXP = 0f;
-    [SerializeField] private float _xpToNextLevel = 0f;
-
+    [SerializeField] private int _xpToNextLevel;
     private Slider _uiXpSlider = null;
 
     public event EventHandler OnPlayerLevelUp;
 
     private void Awake()
     {
-        // Calculate the XP requirement for the very first level
         _xpToNextLevel = CalculateXPForLevel(_currentLevel + 1);
     }
 
     private void Start()
     {
-        _uiXpSlider = GameManager.Instance.GetXpSlider();
+        _uiXpSlider = Hud.Instance.UiXpSlider;
+        InitSlider();
         
         GameManager.Instance.OnXpCollect += GameManager_OnXpCollect;
     }
 
-    public void InitSlider()
+    private void GameManager_OnXpCollect(object sender, EventArgs e)
+    {
+        AddXP(1);
+    }
+
+    private void InitSlider()
     {
         _uiXpSlider.minValue = 0f;
         _uiXpSlider.maxValue = _xpToNextLevel;
         _uiXpSlider.value = 0;
     }
 
-    public void AddXP(float amount)
+    private void AddXP(float amount)
     {
         _currentXP += amount;
         _uiXpSlider.value += amount;
 
         // Continuously check if the player has enough XP to level up
-        while (_currentXP >= _xpToNextLevel && _currentLevel < _levelData.MaxLevel)
+        while (_currentXP >= _xpToNextLevel)
         {
             LevelUp();
         }
@@ -75,27 +74,9 @@ public class PlayerLevelManager : MonoBehaviour
 
     // METHOD FOR XP CALCULATION
     // This method can be called at any time to know the total XP for a given level.
-    public float CalculateXPForLevel(int targetLevel)
+    private int CalculateXPForLevel(int targetLevel)
     {
-        // If the target level is outside the max limit
-        if (targetLevel > _levelData.MaxLevel)
-        {
-            return float.MaxValue;
-        }
-
-        // Our formula: XP_n = Base * (n^2 + (n * C))
-        float baseVal = _levelData.BaseXP;
-        float C = _levelData.CurveMultiplier;
-        float n = targetLevel;
-
-        float requiredXP = baseVal * (n * n + (n * C));
-
-        // Return the total XP required to reach this level
+        int requiredXP = targetLevel * 2;
         return requiredXP;
-    }
-    
-    private void GameManager_OnXpCollect(object sender, EventArgs e)
-    {
-        AddXP(1);
     }
 }
