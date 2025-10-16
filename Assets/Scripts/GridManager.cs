@@ -37,7 +37,7 @@ public class GridManager : MonoBehaviour
     }
 
     private void Start() {
-        _mouseInputManager = GameManager.Instance.GetPlayer().GetComponent<MouseInputManager>();
+        // _mouseInputManager = GameManager.Instance.GetPlayer().GetComponent<MouseInputManager>();
     }
 
     private void CreateGrid()

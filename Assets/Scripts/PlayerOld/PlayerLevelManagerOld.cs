@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerLevelManager : MonoBehaviour
+public class PlayerLevelManagerOld : MonoBehaviour
 {
     [SerializeField] private int _currentLevel = 1;
     [SerializeField] private float _currentXP = 0f;

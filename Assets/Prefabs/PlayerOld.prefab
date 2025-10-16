@@ -99,7 +99,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 153183039737896588}
-  - component: {fileID: -2090122760770192645}
   - component: {fileID: 1097755557742157700}
   - component: {fileID: 4226030954978734808}
   - component: {fileID: 6225677272146056953}
@@ -107,7 +106,7 @@ GameObject:
   - component: {fileID: 4259436886557168890}
   - component: {fileID: 7310870934347700541}
   m_Layer: 7
-  m_Name: Player
+  m_Name: PlayerOld
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,18 +128,6 @@ Transform:
   - {fileID: 3537144776970048631}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2090122760770192645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135238334834922092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd6e203c6296c040b77e3cf6ac41dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!114 &1097755557742157700
 MonoBehaviour:
   m_ObjectHideFlags: 0

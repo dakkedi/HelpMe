@@ -28,11 +28,12 @@ public class CoinController : MonoBehaviour
 
     private bool IsPlayerInReach()
     {
-        GameObject player = GameManager.Instance.GetPlayer();
-        float radius = player.GetComponent<PlayerController>().GetPullRadius();
-        Vector3 playerPos = player.transform.position;
-        Vector3 coinPos = transform.position;
-        float distance = Vector3.Distance(playerPos, coinPos);
-        return distance <= radius;
+        return true;
+        // GameObject player = GameManager.Instance.GetPlayer();
+        // float radius = player.GetComponent<PlayerController>().GetPullRadius();
+        // Vector3 playerPos = player.transform.position;
+        // Vector3 coinPos = transform.position;
+        // float distance = Vector3.Distance(playerPos, coinPos);
+        // return distance <= radius;
     }
 }

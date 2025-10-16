@@ -40,7 +40,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.TryGetComponent(out Player player))
         {
             // Damage the player upon entering their trigger area.
-            other.gameObject.GetComponent<PlayerController>().TakeDamage(_enemyStats.Damage);
+            // other.gameObject.GetComponent<PlayerController>().TakeDamage(_enemyStats.Damage);
         }
     }
 

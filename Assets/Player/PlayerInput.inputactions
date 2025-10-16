@@ -1,33 +1,15 @@
 {
     "version": 1,
-    "name": "PlayerMove",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
-            "id": "a8721b69-ed26-4481-bf1e-12dc95847276",
+            "id": "49213910-2b69-4d96-a091-45d843ee3139",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "13426a30-d4aa-492d-938e-3d7984876b51",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "LeftClick",
-                    "type": "Button",
-                    "id": "ca77f3f9-7bef-4cab-8a47-9eb7b2227155",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Point",
-                    "type": "Value",
-                    "id": "1bfb7934-c961-44fb-8085-20d345f1614d",
+                    "id": "fa4cdcfa-9a9a-4e7f-941e-8426fff16848",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -37,7 +19,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "3e2e6802-0afc-4202-bdd2-e97cc94e541f",
+                    "id": "8dc5ca1c-ca4b-497d-89c0-8345bce417e2",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
@@ -48,7 +30,7 @@
                 },
                 {
                     "name": "WASD",
-                    "id": "2df96fef-3a5f-43bb-8e7d-f69a660c1310",
+                    "id": "e8f9b163-1dd9-4805-9035-e94579df2132",
                     "path": "Dpad",
                     "interactions": "",
                     "processors": "",
@@ -59,7 +41,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "5c35ae51-1ca1-42b6-a701-37549bc1c686",
+                    "id": "bceecff8-fc5a-43ff-83c8-4fbe1b01dd03",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -70,7 +52,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "ef638e3c-489d-4dbc-9d2e-9c763aff45bc",
+                    "id": "f6ac1650-ff72-4627-8ab4-a107adfe6475",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
@@ -81,7 +63,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "3498234c-34ed-42c9-bce2-111b9a86562d",
+                    "id": "8eb63b00-da12-4082-8eb5-1ff367ae195e",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -92,7 +74,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "0462c372-8122-4e36-8f7e-85ce0e3eeb90",
+                    "id": "cb42eb68-7356-48b9-852a-b9b9f6339dcc",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
@@ -103,7 +85,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "d0515805-2c5a-4003-94e7-02556b8fec6a",
+                    "id": "913aea06-dc3a-48a9-8f0a-0c656c78a016",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -114,7 +96,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "a7fc292c-f1fa-4fb5-bf66-4954e4f24b46",
+                    "id": "e2170808-dbff-4f13-8a61-50ccc5bc7c3e",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
@@ -125,7 +107,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "d0214717-82b3-41b8-94e4-a39af87700b8",
+                    "id": "2f1544d6-8190-4125-aa5b-89dbe5d2bc09",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -136,7 +118,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "f2dde5f4-e721-46cc-85f4-ad8e14024ada",
+                    "id": "c4501638-0fb2-4738-a9fe-0237fdf3d5bc",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
@@ -147,7 +129,7 @@
                 },
                 {
                     "name": "",
-                    "id": "019b1eff-088f-4c37-80ca-ed8ad5512c09",
+                    "id": "fe054bb4-8af0-4ab4-85b4-bef8ff486af1",
                     "path": "<XRController>/{Primary2DAxis}",
                     "interactions": "",
                     "processors": "",
@@ -158,34 +140,12 @@
                 },
                 {
                     "name": "",
-                    "id": "32f44dc3-5b15-48ca-90ab-581c8a86b18b",
+                    "id": "c1173965-a398-400a-ba3b-f8720e08daed",
                     "path": "<Joystick>/stick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
                     "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7774be8b-dc2a-4863-badf-f68f08ca7a50",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LeftClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ba26814a-8532-4d9f-867c-1da1232709a9",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

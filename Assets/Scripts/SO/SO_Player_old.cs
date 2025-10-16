@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SO_Player", menuName = "Scriptable Objects/SO_Player")]
-public class SO_Player : ScriptableObject
+public class SO_Player_old : ScriptableObject
 {
     [SerializeField] private float _health = 2f;
     [SerializeField] private float _moveSpeed = 3f;

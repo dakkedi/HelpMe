@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _playerPrefab;
+    // [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private Transform _playerSpawnPoint;
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _player = Instantiate(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity);
+        // _player = Instantiate(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity);
     }
 
     private void Update()
